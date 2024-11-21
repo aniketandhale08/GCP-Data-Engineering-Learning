@@ -35,3 +35,57 @@
 
 6. **Verify Output**:  
    - Check the BigQuery table to ensure the specified columns from the CSV file are loaded correctly.  
+
+---
+
+### 2.Extracting Data from Cloud Spanner to GCS Using Dataflow
+
+### Summary
+This tutorial demonstrates the process of extracting data from a Cloud Spanner table and saving it as a CSV file in a Google Cloud Storage (GCS) bucket using Dataflow with an inbuilt template. Key steps include setting up the Spanner database, configuring the Dataflow job, troubleshooting errors, and verifying successful file creation in GCS.
+
+1. **Set Up Cloud Spanner**
+- **Create a Cloud Spanner Instance:**
+  - Name: `DF demo`
+  - Region: `us-central1`
+- **Create a Database:**
+  - Name: `dfdb`
+- **Create a Table:**
+  - Use SQL to create a `Singers` table with appropriate schema.
+- **Insert Data into Table:**
+  - Add test records (e.g., `3 records`) into the `Singers` table.
+
+2. **Configure Dataflow Job**
+- **Job Name:** `spanner-to-gcs`
+- **Template:** `Cloud Spanner to Text Files on Cloud Storage`
+- **Parameters:**
+  - Spanner Instance: `DF demo`
+  - Database: `dfdb`
+  - Table: `Singers`
+  - Output GCS Bucket: Specify bucket name (e.g., `df-demo-bucket`).
+  - Temporary Location: Create and specify a temp directory (e.g., `tmp/`).
+
+3. **Run the Dataflow Job**
+- Monitor job progress in the GCP console.
+- Address errors (e.g., case-sensitive table names or missing fields).
+
+4. **Troubleshoot Common Errors**
+- Ensure table names are **case-sensitive** and match the Spanner schema.
+- Validate all required parameters for the Dataflow job.
+- Correct bucket paths with necessary trailing slashes (`/`).
+
+ 5. **Verify Output**
+- After the job is completed, check the GCS bucket for the generated CSV file.
+- Open the file and confirm the data matches the source records from Spanner.
+
+### Learnings
+- Case sensitivity in table names is critical for Cloud Spanner.
+- Providing correct paths and bucket names is essential to avoid runtime errors.
+- Errors encountered during the process can help with learning how to troubleshoot pipelines.
+
+---
+
+
+
+
+
+
