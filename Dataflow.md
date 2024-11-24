@@ -84,11 +84,6 @@ This tutorial demonstrates the process of extracting data from a Cloud Spanner t
 
 ---
 
-
-
-
-
-
 ### 2. Build a Dataflow Job Using SQL Queries  
 
 ### Summary  
@@ -136,8 +131,46 @@ This guide demonstrates the creation of a Dataflow job using SQL queries in BigQ
 - Dataflow enables automating repetitive SQL operations, creating pipelines efficiently.  
 
 
+---
 
+### 3. Data from PubSub to BigQuery Using Dataflow
 
+### Summary  
+This guide demonstrates how to construct a **streaming pipeline** on **Google Cloud Platform (GCP)** using services like **Pub/Sub**, **BigQuery**, **Cloud Storage**, and **Dataflow**.
+
+1. **Create a Cloud Storage Bucket:**
+   - **Name**: `temp_bucket_BQ_BQ`.
+   - **Region**: `us-east4`.
+   - Add a folder named `temp` for logs.
+
+2. **Set Up BigQuery:**
+   - **Dataset**: `streaming_pup_sub_to_BQ`.
+   - **Region**: `us-east4`.
+   - **Table**: `stream_pup_sub_to_BQ` with schema (e.g., a single field `data` of type `STRING`).
+
+3. **Create a Pub/Sub Topic:**
+   - **Name**: `streaming_pup_sub_to_BQ`.
+   - Subscription is optional.
+
+4. **Configure Dataflow:**
+   - Use a **predefined template**: `Pub/Sub Topic to BigQuery`.
+   - Input details:
+     - **Pub/Sub Topic**: The topic created earlier.
+     - **BigQuery Table**: The table created.
+     - **Temporary Storage**: `temp_bucket_BQ_BQ/temp`.
+
+5. **Publish Messages to Pub/Sub:**
+   - Example: Messages like `KF is a kind person` can be published multiple times.
+
+6. **Verify BigQuery Data:**
+   - Query the BigQuery table to confirm data ingestion from Pub/Sub.
+
+### Learnings  
+- **Dataflow Job**: Transforms and streams data from Pub/Sub to BigQuery. Ensure the job runs successfully.
+- **Enable APIs**: Activate all required APIs for Cloud Storage, BigQuery, Pub/Sub, and Dataflow.
+- **Predefined Templates**: Simplifies the pipeline creation, removing the need for custom Dataflow code.
+
+---
 
 
 
