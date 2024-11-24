@@ -160,7 +160,7 @@ This guide demonstrates how to construct a **streaming pipeline** on **Google Cl
      - **Temporary Storage**: `temp_bucket_BQ_BQ/temp`.
 
 5. **Publish Messages to Pub/Sub:**
-   - Example: Messages like `KF is a kind person` can be published multiple times.
+   - Example: Messages like `This is my message` can be published multiple times.
 
 6. **Verify BigQuery Data:**
    - Query the BigQuery table to confirm data ingestion from Pub/Sub.
